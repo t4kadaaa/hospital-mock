@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>〇〇総合病院 | 実験プロトタイプ B-L2-I1</title>
+  <style>
+    :root{
+      --accent: #6b7280;
+      --accent-soft: #f1f2f5;
+      --bg: #ffffff;
+      --fg: #0f172a;
+      --muted: #475569;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Meiryo", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg);
+      background:var(--bg);
+      line-height:1.6;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:10px;}
+    header{
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(0deg, var(--bg), var(--bg));
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(6px);
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; padding:10px 10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:5px;
+      font-weight:700;
+    }
+    .logo{width:40px;height:40px;border-radius:50%;
+      background:var(--accent-soft); border:2px solid var(--accent);}
+    nav{
+      display:flex; gap:5px; flex-wrap:wrap;
+    }
+    nav a{
+      text-decoration:none; color:var(--muted); padding:8px 12px; border-radius:8px;
+    }
+    nav a.active, nav a:hover{background:var(--accent-soft); color:var(--fg);}
+    .hero{
+      margin:10px auto;
+      background:var(--accent-soft);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12.0px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{margin:0 0 5px 0; font-size:28px}
+    .hero p{margin:0; color:var(--muted)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:5px;
+      align-items:stretch;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:8.0px;
+      box-shadow:var(--shadow);
+      min-height:160px;
+    }
+    .card h3{margin-top:0; font-size:18px}
+    .btn{
+      display:inline-block; padding:10px 16px; border-radius:8px;
+      background:var(--accent); color:white; text-decoration:none; font-weight:600;
+    }
+    .tag{
+      display:inline-block; padding:4px 10px; border-radius:9999px; font-size:12px;
+      border:1px solid var(--border); background:#fff;
+    }
+    .footer{
+      border-top:1px solid var(--border);
+      margin-top:20px; padding:10px; color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      display:inline-block; background:var(--accent-soft); border:1px solid var(--border);
+      border-radius:9999px; padding:6px 10px; margin-right:8px; font-size:12px;
+    }
+    .update{
+      color:var(--muted); font-size:13px;
+    }
+    .doctor{
+      display:flex; gap:5px; align-items:center; margin-top:5px;
+    }
+    .avatar{ width:48px; height:48px; border-radius:50%; background:var(--accent-soft); border:1px solid var(--border);}
+    ul.faq{ padding-left:18px; margin:0;}
+    .cond{
+      position:fixed; right:10px; bottom:10px;
+      background:#111; color:#fff; padding:8px 12px; border-radius:10px; opacity:0.85;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px; letter-spacing:0.5px;
+    }
+    .notice{
+      padding:10px; border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:8px;
+      margin-top:5px; font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div>〇〇総合病院</div>
+          <div style="font-size:12px;color:var(--muted)">OO General Hospital</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#" class="active">トップ</a>
+        <a href="#">診療科</a>
+        <a href="#">初めての方へ</a>
+        <a href="#">面会・お見舞い</a>
+        <a href="#">アクセス</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>安心して受診いただくために</h1>
+      <p>当院は地域の皆さまの健康を支える総合病院です。初診・再診の流れや診療時間をわかりやすくご案内します。</p>
+      <div style="margin-top:10px;">
+        <a class="btn" href="#first">初診のご案内</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card" id="hours">
+        <h3>診療時間</h3>
+        <div class="notice"><strong>平日</strong> 9:00–12:00 / 13:30–17:00　<strong>土曜</strong> 9:00–12:00（午後休診）</div>
+        <p class="update">受付は各診療開始の30分前より</p>
+      </article>
+
+      <article class="card" id="access">
+        <h3>アクセス</h3>
+        <p>〒123-4567 東京都〇〇区〇〇1-2-3</p>
+        <p>〇〇駅 東口より徒歩7分 / バス「〇〇病院前」下車すぐ</p>
+        <a class="btn" href="#">地図を見る</a>
+      </article>
+
+      <article class="card" id="depts">
+        <h3>診療科</h3>
+        <p>内科 / 外科 / 整形外科 / 小児科 / 産婦人科 / 眼科 / 皮膚科 ほか</p>
+        <a class="btn" href="#first">初診の流れ</a>
+      </article>
+    </section>
+
+    <section class="grid" style="margin-top:10px;">
+      <article class="card" id="first">
+        <h3>初めての方へ</h3>
+        <ol style="margin:0; padding-left:18px;">
+          <li>保険証・紹介状をご持参ください</li>
+          <li>1階受付で「初診」をお申し出ください</li>
+          <li>問診票のご記入→各科へご案内</li>
+        </ol>
+      </article>
+
+      <article class="card" id="contact">
+        <h3>お問い合わせ</h3>
+        <p>代表：03-1234-5678（平日 9:00–17:00）</p>
+        <a class="btn" href="#">よくある質問</a>
+      </article>
+
+      <article class="card" id="safety">
+        <h3>感染対策</h3>
+        <p>院内の定期換気・手指消毒・発熱外来の分離動線など、基本的な感染対策を実施しています。</p>
+      </article>
+    </section>
+
+    
+    <section class="grid" style="margin-top:10px;">
+      <article class="card" id="news">
+        <h3>お知らせ</h3>
+        <p class="update">最終更新日：2025-11-24</p>
+        <ul style="margin:0; padding-left:18px;">
+          <li>インフルエンザ予防接種の予約受付を開始しました。</li>
+          <li>土曜午前の小児科外来は予約制となります。</li>
+        </ul>
+      </article>
+
+      <article class="card" id="doctors">
+        <h3>医師紹介</h3>
+        <div class="doctor">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <strong>山田 太郎</strong> 医師（内科）<br>
+            専門：生活習慣病、総合診療
+          </div>
+        </div>
+        <div class="doctor">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <strong>佐藤 花子</strong> 医師（小児科）<br>
+            専門：小児救急、ワクチン
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="faq">
+        <h3>FAQ</h3>
+        <ul class="faq">
+          <li>Q. 初診に必要なものは？<br> A. 保険証、各種医療証、紹介状（お持ちの方）。</li>
+          <li>Q. 会計はキャッシュレス対応？<br> A. 各種クレジット・交通系ICに対応。</li>
+          <li>Q. 発熱外来は？<br> A. 専用枠・動線で実施。お電話でご予約ください。</li>
+          <li>Q. 駐車場はありますか？<br> A. 80台（有料）。</li>
+          <li>Q. 面会時間は？<br> A. 14:00–19:00（一部病棟で異なります）。</li>
+        </ul>
+      </article>
+    </section>
+    
+  </main>
+
+  <div class="footer container">
+    <div class="tag">これは研究用プロトタイプです（架空の病院）。</div>
+  </div>
+  <div class="cond" title="条件コード">B-L2-I1</div>
+
+</body>
+</html>
